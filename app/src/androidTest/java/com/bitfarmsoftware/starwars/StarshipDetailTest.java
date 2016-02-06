@@ -80,16 +80,16 @@ public class StarshipDetailTest {
         component.inject(this);
     }
 
-//    @BeforeClass
-//    public static void registerIdler(){
-//        RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
-//    }
+    @BeforeClass
+    public static void registerIdler(){
+        RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
+    }
 
 
     @Before
     public void setup() {
 
-//        Espresso.registerIdlingResources(RxIdlingResource.get());
+        Espresso.registerIdlingResources(RxIdlingResource.get());
 
         // retrieve the starship we want to test with and simulate its selection to show the detail fragment
         millFalcon = api.getStarships()
@@ -112,16 +112,16 @@ public class StarshipDetailTest {
 
 
         // add delay to network
-//        ((MockStarWarsApi)api).setNetworkDelay(0);
+        ((MockStarWarsApi)api).setNetworkDelay(0);
 
         activityRule.getActivity().onSelected(millFalcon);
 
     }
 
-//    @After
-//    public void teardown(){
-//        Espresso.unregisterIdlingResources(RxIdlingResource.get());
-//    }
+    @After
+    public void teardown(){
+        Espresso.unregisterIdlingResources(RxIdlingResource.get());
+    }
 
 
     @Test
